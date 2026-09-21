@@ -1,30 +1,39 @@
+cd ~/Data-Portfolio/retail-sales-sql-analysis
+nano README.m
+
 # Retail Sales & Customer Analysis
 
 ## Project Overview
 
-This project analyzes retail sales transaction data using **MySQL and SQL** to identify sales patterns, product performance, customer behavior, and revenue trends.
+This project analyzes 1,000 retail transactions using MySQL and SQL to identify revenue patterns, product performance, customer behavior, and sales trends.
 
-The project is designed as a practical data analytics portfolio project, demonstrating how SQL can be used to clean, validate, analyze, and extract business insights from transactional data.
+The project demonstrates a practical data analytics workflow:
+
+1. Importing raw transactional data
+2. Cleaning and validating the dataset
+3. Performing exploratory analysis
+4. Applying advanced SQL techniques
+5. Extracting business-focused insights
+6. Managing the project using Git and GitHub
 
 ## Business Questions
 
-The analysis focuses on questions such as:
+The analysis investigates:
 
-* Which branches generate the most revenue?
-* Which product lines perform best?
-* How does revenue change across months?
-* Which payment methods are most commonly used?
-* How do Member and Normal customers differ in spending?
-* How does revenue differ by gender?
-* Which product lines generate the most gross income?
-* Which product lines receive the highest customer ratings?
-* Which hours generate the most sales revenue?
-* Which product lines perform best within each branch?
-* What are the highest-value transactions within each product category?
+* How much revenue was generated?
+* Which branch generated the most revenue?
+* Which product lines performed best?
+* How many units were sold?
+* Which customer segments generated the most revenue?
+* Which payment methods were used most often?
+* How did revenue change across months?
+* Which product lines generated the most gross income?
+* Which hours recorded the most sales activity?
+* Which product lines performed best within each branch?
 
 ## Dataset
 
-The dataset contains **1,000 retail transactions** and includes information about:
+The dataset contains 1,000 retail transactions with information on:
 
 * Invoice ID
 * Branch
@@ -44,71 +53,99 @@ The dataset contains **1,000 retail transactions** and includes information abou
 * Gross income
 * Customer rating
 
-The raw dataset is stored in:
+Source file:
 
 `data/retail_sales.csv`
 
-## Tools Used
+## Tools
 
-* **MySQL 8.4**
-* **SQL**
-* **Git**
-* **GitHub**
-* **Ubuntu Linux**
+* MySQL 8.4
+* SQL
+* Git
+* GitHub
+* Ubuntu Linux
 
-## Data Preparation & Quality Checks
+## Data Quality
 
-Before performing the analysis, the dataset was validated to ensure that it was suitable for analysis.
+The dataset was validated before analysis.
 
 Checks included:
 
-* Confirming the total number of records
-* Checking for duplicate invoice IDs
-* Checking for missing values
-* Checking numeric value ranges
-* Checking for invalid sales records
-* Converting transaction dates into MySQL `DATE` format
-* Converting transaction times into MySQL `TIME` format
+* Total record count
+* Unique invoice IDs
+* Missing values
+* Numeric ranges
+* Invalid transaction values
+* Date and time formatting
 
-The final dataset contains:
+Validation confirmed:
 
-**1,000 records and 1,000 unique invoice IDs.**
+* **1,000 transactions**
+* **1,000 unique invoices**
+* **0 invalid records** under the validation rules used
+* Transaction dates successfully converted to MySQL `DATE`
+* Transaction times successfully stored as MySQL `TIME`
 
-No invalid records were identified using the validation rules implemented in the SQL analysis.
+## Key Metrics
 
-## SQL Analysis
+| Metric                    |      Value |
+| ------------------------- | ---------: |
+| Total transactions        |      1,000 |
+| Total revenue             | 322,966.75 |
+| Total gross income        |  15,379.37 |
+| Average transaction value |     322.97 |
+| Average customer rating   |       6.97 |
+| Total units sold          |      5,510 |
 
-The SQL analysis includes:
+## Key Findings
 
-### Descriptive Analysis
+### Branch Performance
 
-* Branch and city revenue
-* Product-line revenue and units sold
-* Monthly revenue
-* Payment-method performance
-* Customer-type performance
-* Gender-based sales performance
-* Gross income and margin analysis
-* Customer ratings
-* Sales activity by hour
+Branch C in Naypyitaw recorded the highest revenue in the dataset.
 
-### Advanced SQL
+| Branch | City      | Transactions |    Revenue | Average Transaction |
+| ------ | --------- | -----------: | ---------: | ------------------: |
+| C      | Naypyitaw |          328 | 110,568.71 |              337.10 |
+| A      | Yangon    |          340 | 106,200.37 |              312.35 |
+| B      | Mandalay  |          332 | 106,197.67 |              319.87 |
 
-The project also demonstrates:
+Branch C also had the highest average transaction value at 337.10.
 
+### Product-Line Performance
+
+Food and beverages generated the highest revenue and gross income.
+
+| Product Line           | Transactions | Units Sold |   Revenue | Gross Income |
+| ---------------------- | -----------: | ---------: | --------: | -----------: |
+| Food and beverages     |          174 |        952 | 56,144.84 |     2,673.56 |
+| Sports and travel      |          166 |        920 | 55,122.83 |     2,624.90 |
+| Electronic accessories |          170 |        971 | 54,337.53 |     2,587.50 |
+| Fashion accessories    |          178 |        902 | 54,305.90 |     2,586.00 |
+| Home and lifestyle     |          160 |        911 | 53,861.91 |     2,564.85 |
+| Health and beauty      |          152 |        854 | 49,193.74 |     2,342.56 |
+
+Electronic accessories recorded the highest number of units sold at **971 units**.
+
+## SQL Techniques Demonstrated
+
+The project uses:
+
+* `SELECT`
+* `WHERE`
 * `GROUP BY`
+* `ORDER BY`
 * Aggregate functions
-* `CASE`
+* `COUNT()`
+* `SUM()`
+* `AVG()`
+* `MIN()` and `MAX()`
+* `DISTINCT`
 * Common Table Expressions (CTEs)
-* Window functions
 * `RANK()`
 * `ROW_NUMBER()`
-* Partitioned ranking
-* Subqueries
-
-The complete analysis queries are available in:
-
-`sql/analysis.sql`
+* Window functions
+* Date and time functions
+* Data-quality validation
 
 ## Project Structure
 
@@ -126,47 +163,43 @@ retail-sales-sql-analysis/
 └── README.md
 ```
 
-## Key Findings
+## Analysis File
 
-The detailed findings will be documented here after the analysis outputs have been reviewed.
+The complete SQL analysis is available in:
 
-Examples of the findings to be documented include:
-
-* Highest-revenue branch
-* Highest-performing product line
-* Highest-revenue month
-* Most-used payment method
-* Customer segment with the highest average spending
-* Product line with the highest gross income
-* Busiest sales hours
+`sql/analysis.sql`
 
 ## Skills Demonstrated
 
-This project demonstrates practical ability in:
+This project demonstrates practical skills in:
 
 * SQL querying
 * Data cleaning and validation
 * Exploratory data analysis
-* Business-focused analysis
-* Aggregation and grouping
+* Business analysis
+* Aggregation
 * Window functions
 * Common Table Expressions
-* Data quality checking
-* Git and GitHub workflow
-* Translating raw transaction data into business questions
+* Data quality checks
+* Git and GitHub
+* Translating business questions into SQL analysis
 
 ## Future Improvements
 
-Future versions of the project may include:
+Potential extensions include:
 
-* Python-based exploratory data analysis
-* Data visualizations
-* Power BI dashboard
+* Python exploratory data analysis
+* Data visualization
+* Power BI dashboard development
+* Customer segmentation
 * Automated reporting
-* Additional customer segmentation analysis
 
 ## Author
 
 **Mwita Nyehita**
 
-GitHub: [@mwitanyehita](https://github.com/mwitanyehita)
+GitHub: https://github.com/mwitanyehita
+
+
+
+
