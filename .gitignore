@@ -1,0 +1,8 @@
+# MySQL and local development files
+*.log
+*.tmp
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
